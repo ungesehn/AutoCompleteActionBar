@@ -1,5 +1,7 @@
 package com.autocompleteactionbar;
 
+import java.util.ArrayList;
+
 import com.autocompleteactionbar.adapter.DropdownAdapter;
 import com.autocompleteactionbar.misc.ClearableAutoCompleteTextView;
 import com.autocompleteactionbar.misc.ClearableAutoCompleteTextView.OnClearListener;
@@ -12,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 
 public class MainActivity extends Activity {
@@ -22,29 +23,25 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		ActionBar actionBar = getActionBar(); // you can use ABS or the non-bc
-												// ActionBar
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
-				| ActionBar.DISPLAY_SHOW_HOME);
+		getActionBar().setDisplayOptions(
+				ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
 
 		LayoutInflater inflater = (LayoutInflater) this
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		View v = inflater.inflate(R.layout.searchbox, null);
-		AutoCompleteTextView textView = (AutoCompleteTextView) v
-				.findViewById(R.id.search_box);
 
-		textView.setAdapter(new DropdownAdapter(this, R.id.dropdown_item));
+		ArrayList<String> sampleEntries = createSampleList();
 
 		final ImageView searchIcon = (ImageView) v
 				.findViewById(R.id.search_icon);
 		final ClearableAutoCompleteTextView searchBox = (ClearableAutoCompleteTextView) v
 				.findViewById(R.id.search_box);
+		searchBox.setAdapter(new DropdownAdapter(this, sampleEntries));
 
 		// start with the text view hidden in the action bar
 		searchBox.setVisibility(View.INVISIBLE);
 		searchIcon.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				toggleSearch(false);
@@ -52,7 +49,6 @@ public class MainActivity extends Activity {
 		});
 
 		searchBox.setOnClearListener(new OnClearListener() {
-
 			@Override
 			public void onClear() {
 				toggleSearch(true);
@@ -60,7 +56,6 @@ public class MainActivity extends Activity {
 		});
 
 		searchBox.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -69,7 +64,18 @@ public class MainActivity extends Activity {
 
 		});
 
-		actionBar.setCustomView(v);
+		getActionBar().setCustomView(v);
+	}
+
+	private ArrayList<String> createSampleList() {
+		ArrayList<String> samples = new ArrayList<String>();
+		samples.add("Germany");
+		samples.add("France");
+		samples.add("Spain");
+		samples.add("Greece");
+		samples.add("Poland");
+		samples.add("Austria");
+		return samples;
 	}
 
 	// this toggles between the visibility of the search icon and the search box
