@@ -1,1 +1,2 @@
-just a simple test
+Just a simple Android example showing how to add a search widget with Autocompletion to the ActionBar without using Content Providers and the required overhead. 
+Based on this article: http://drzon.net/how-to-create-a-clearable-autocomplete-dropdown-with-autocompletetextview/
