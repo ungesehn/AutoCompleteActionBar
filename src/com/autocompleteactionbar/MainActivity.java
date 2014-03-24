@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// handle clicks on search results here
+				// ...
 			}
 
 		});

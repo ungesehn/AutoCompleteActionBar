@@ -36,8 +36,7 @@ public class DropdownAdapter extends BaseAdapter implements Filterable {
 					false);
 		}
 
-		TextView text = (TextView) convertView.findViewById(R.id.dropdown_item);
-		text.setText(filteredEntries.get(position));
+		((TextView) convertView.findViewById(R.id.dropdown_item)).setText(getItem(position));
 
 		return convertView;
 
@@ -58,13 +57,12 @@ public class DropdownAdapter extends BaseAdapter implements Filterable {
 
 	@Override
 	public String getItem(int position) {
-		return originalEntries.get(position);
+		return filteredEntries.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	private class SampleFilter extends Filter {
