@@ -10,11 +10,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_toRightOf="@+id/search_icon"
         android:dropDownVerticalOffset="5dp"
         android:dropDownWidth="wrap_content"
         android:inputType="textAutoComplete|textAutoCorrect"
         android:popupBackground="@android:color/white"
         android:textColor="@android:color/darker_gray" >
+
     </com.autocompleteactionbar.misc.ClearableAutoCompleteTextView>
 
     <ImageView
