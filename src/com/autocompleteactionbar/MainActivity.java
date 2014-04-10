@@ -2,6 +2,7 @@
 package com.autocompleteactionbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.autocompleteactionbar.adapter.DropdownAdapter;
 import com.autocompleteactionbar.misc.ClearableAutoCompleteTextView;
@@ -15,8 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -42,6 +41,7 @@ public class MainActivity extends Activity {
                 .findViewById(R.id.search_icon);
         final ClearableAutoCompleteTextView searchBox = (ClearableAutoCompleteTextView) v
                 .findViewById(R.id.search_box);
+
         searchBox.setAdapter(new DropdownAdapter(this, sampleEntries));
 
         // start with the text view hidden in the action bar
@@ -73,14 +73,8 @@ public class MainActivity extends Activity {
     }
 
     private ArrayList<String> createSampleList() {
-        ArrayList<String> samples = new ArrayList<String>();
-        samples.add("Germany");
-        samples.add("France");
-        samples.add("Spain");
-        samples.add("Greece");
-        samples.add("Poland");
-        samples.add("Austria");
-        return samples;
+        String[] countries = getResources().getStringArray(R.array.countries_array);
+        return new ArrayList<String>(Arrays.asList(countries));
     }
 
     // this toggles between the visibility of the search icon and the search box

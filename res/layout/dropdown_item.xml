@@ -24,7 +24,7 @@
     android:layout_height="?android:attr/listPreferredItemHeightSmall"
     android:ellipsize="marquee"
     android:paddingLeft="4dp"
-    android:paddingRight="4dp"
+    android:paddingRight="8dp"
     android:singleLine="true"
     android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
     android:textColor="@android:color/darker_gray"
